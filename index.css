@@ -1,3 +1,10 @@
+:root {
+  --task-bar--height: 56px;
+  --task-bar--item--height: var(--task-bar--height);
+  --win-start--height: var(--task-bar--height);
+  --desk-top--icon--item--height: 80px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -28,15 +35,49 @@ body {
 
 .desk-top {
   width: 100%;
-  /* height: calc(100% - 40px); */
   flex: 1;
+  padding: 10px;
   background-size: 70% calc(70% - 40px);
   background-image: url("./images//desk-top_bg.jfif");
 }
 
+.desk-top--icon--group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desk-top--icon--item {
+  flex: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 80px;
+  height: var(--desk-top--icon--item--height);
+  cursor: pointer;
+  padding: 0 6px;
+}
+
+.desk-top--icon--item ._icon {
+  width: 40px;
+  height: 40px;
+}
+
+.desk-top--icon--item ._name {
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+  text-overflow: ellipsis;
+}
+
 .task-bar {
   width: 100%;
-  height: 56px;
+  height: var(--task-bar--height);
   position: fixed;
   left: 0;
   right: 0;
@@ -48,29 +89,43 @@ body {
 }
 
 .win-start {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(56px, var(--win-start--height));
+  height: var(--win-start--height);
+  cursor: pointer;
+}
+
+.task--list {
+  display: inline-flex;
+  /* height: 56px; */
 }
 
 .task--item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 56px;
-    height: 56px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(56px, var(--task-bar--item--height));
+  height: var(--task-bar--item--height);
+  cursor: pointer;
 }
 
+.win-start img,
 .task--item img {
-    width: 26px;
-    height: 26px;
+  width: 26px;
+  height: 26px;
 }
 
+.win-start:hover,
 .task--item:hover {
-    background-color: #144104;
+  background-color: #144104;
 }
+
 .task--item:active {
-    cursor: move;
-    user-select: none;
+  cursor: move;
+  user-select: none;
 }
